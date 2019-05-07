@@ -8,7 +8,7 @@ dev:
     - internal/watch:
         code: |
           go build ./...
-          ./source
+          ./getting-started-golang
         reload: true
 
 # Build definition

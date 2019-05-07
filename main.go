@@ -12,7 +12,7 @@ type citiesResponse struct {
 
 func cityHandler(res http.ResponseWriter, req *http.Request) {
 	cities := citiesResponse{
-		Cities: []string{"Amsterdam", "Berlin", "New York", "San Francisco", "Tokyo"}}
+		Cities: []string{"Amsterdam", "Berlin", "New York", "San Francisco", "Tokyo", "London"}}
 
 	res.Header().Set("Content-Type", "application/json; charset=utf-8")
 	json.NewEncoder(res).Encode(cities)
@@ -26,6 +26,7 @@ func defaultHandler(res http.ResponseWriter, req *http.Request) {
 func main() {
 	http.HandleFunc("/", defaultHandler)
 	http.HandleFunc("/cities.json", cityHandler)
+	log.Println("Start to listen on port 5000")
 	err := http.ListenAndServe(":5000", nil)
 	if err != nil {
 		log.Fatal("Unable to listen on port 5000 : ", err)
